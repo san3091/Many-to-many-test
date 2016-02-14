@@ -1,16 +1,9 @@
 Rails.application.routes.draw do
-  get 'session/login'
-
-  get 'session/logout'
-
-  get 'landing/login'
-  post 'landing/landing' => 'landing#login'
-  get 'landing/landing'
-
-  get 'landing/sign_up'
-
   resources :projects
   resources :users
+
+  post 'projects/:id' => 'projects#add_user'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

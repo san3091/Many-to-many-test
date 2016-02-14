@@ -29,13 +29,18 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to projects_path, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def add_user
+    user = User.find_by(name: params[:user_name])
+    ProjectsUser.create(user_id: user.id, project_id: @project.id)
   end
 
   # PATCH/PUT /projects/1

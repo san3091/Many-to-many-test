@@ -5,5 +5,9 @@
   <%= @project.name %>
 </p>
 
+<%= form_tag do %>
+  <%= text_field_tag :user_name, placeholder: "name" %>
+  <%= submit_tag, controller: projects, method: add_user%>
+<% end %>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
